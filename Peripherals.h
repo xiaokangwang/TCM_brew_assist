@@ -13,14 +13,22 @@
 #include <IRremote.h>
 #include <LiquidCrystal_I2C.h>
 #include "stepper_wrapper.h"
+#include "mission.h"
 
 #define IrReceiverPin 10
+
+struct IRinputBuffer {
+  unsigned long numInput=0;
+  };
 
 struct PeripheralArray {
   StepperWrapper sw = StepperWrapper(2, 3, 4, 5);
   Adafruit_MLX90614 mlx = Adafruit_MLX90614();
   LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 16, 2); // set the LCD address to 0x27  0x3F for a 16 chars and 2 line display
   IRrecv irrecv = IRrecv(IrReceiverPin);
+
+  struct IRinputBuffer irb;
+  mission mis;
 };
 
 
