@@ -26,3 +26,15 @@ void TaskResult::FloatReturningValue() {
 void TaskResult::CharReturningValue() {
   flags = (flags & ~0x3) | 0x3;
 }
+
+bool TaskResult::isEnableIntrrupt() {
+  return (flags & 0x4) == 0x4;
+}
+
+void TaskResult::EnableIntrrupt() {
+  flags = (flags & ~0x4) | 0x4;
+}
+
+void TaskResult::DisableIntrrupt() {
+  flags = (flags & 0x4);
+}
