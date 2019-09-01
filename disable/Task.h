@@ -67,6 +67,11 @@ class TaskStack {
     TaskResult tr;
     char interruptAtCount = 0;
     unsigned long nextTimerIntrruptTime = 0;
+    TaskUnion intrrTask;
+    void run();
+    void setEntryPoint(CompoundTask ct);
+  private:
+    
     
 };
 
